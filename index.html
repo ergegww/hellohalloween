@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>개인정보 처리방침 | MewgicPixel</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; min-height:100%; }
+  body {
+    background:radial-gradient(circle at 50% -10%, #122a44 0%, #071322 55%, #03070e 100%);
+    color:#d6ecff;
+    font-family:'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:820px; margin:0 auto; padding:36px 20px 56px; }
+  header { text-align:center; margin-bottom:24px; }
+  .kicker { font-size:12px; letter-spacing:4px; color:#7fc9ff; margin-bottom:10px; }
+  h1 { margin:0; font-size:clamp(26px,5vw,40px); color:#eafffb; text-shadow:0 0 18px rgba(0,255,204,.35); }
+  .langbar { display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; margin:22px 0 28px; }
+  .langbar label { font-size:14px; color:#9ab; }
+  .lang-select {
+    background:#0b1c2e; color:#7fc9ff; border:1px solid #7fc9ff66; border-radius:6px;
+    padding:10px 14px; font-size:15px; min-height:44px; cursor:pointer;
+  }
+  main {
+    background:rgba(8,22,38,.72); border:1px solid rgba(127,201,255,.18);
+    border-radius:18px; padding:clamp(20px,4vw,36px);
+    box-shadow:0 16px 48px rgba(0,0,0,.45);
+  }
+  section { margin-bottom:26px; }
+  section:last-of-type { margin-bottom:18px; }
+  h2 { margin:0 0 8px; font-size:clamp(19px,3vw,23px); color:#7fc9ff; }
+  p { margin:0; font-size:clamp(15px,2.6vw,17px); color:#c7dcf0; }
+  .updated { display:inline-block; font-size:14px; color:#8fb4d0; }
+  .note { margin-top:22px; padding-top:16px; border-top:1px solid rgba(127,201,255,.14); font-size:13px; color:#7f9db8; }
+  footer { text-align:center; margin-top:26px; font-size:13px; color:#6f8aa5; }
+  html[dir="rtl"] .kicker, html[dir="rtl"] footer { letter-spacing:normal; }
+  @media (max-width:600px) {
+    .wrap { padding:24px 14px 40px; }
+    main { padding:20px 16px; }
+    p { font-size:16px; }
+    section { margin-bottom:22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker" id="sub">PRIVACY POLICY</div>
+    <h1 id="title">개인정보 처리방침</h1>
+  </header>
+
+  <div class="langbar">
+    <label for="langSelect">언어 / Language</label>
+    <select class="lang-select" id="langSelect">
+      <option value="auto">AUTO</option>
+      <option value="ko">한국어</option>
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="zh">中文</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="pt">Português</option>
+      <option value="ru">Русский</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+
+  <main>
+    <section><h2 id="collected"></h2><p id="collectedBody"></p></section>
+    <section><h2 id="local"></h2><p id="localBody"></p></section>
+    <section><h2 id="ads"></h2><p id="adsBody"></p></section>
+    <section><h2 id="global"></h2><p id="globalBody"></p></section>
+    <section><h2 id="withdraw"></h2><p id="withdrawBody"></p></section>
+    <section><h2 id="children"></h2><p id="childrenBody"></p></section>
+    <section><h2 id="contact"></h2><p id="contactBody"></p></section>
+    <div class="updated" id="updated"></div>
+    <p class="note">게임 내 옵션(OPTIONS) → PRIVACY POLICY에서도 동일한 내용을 확인할 수 있습니다.<br>The same policy is available in-game via OPTIONS → PRIVACY POLICY.</p>
+  </main>
+
+  <footer>© 2026 MewgicPixel. All rights reserved.</footer>
+</div>
+
+<script>
+const PRIVACY_I18N = {
+  ko: {
+    title:'개인정보 처리방침', sub:'PRIVACY POLICY',
+    collected:'수집 항목', collectedBody:'본 게임은 랭킹 등록을 위해 사용자가 직접 입력한 닉네임을 수집합니다. 그 외 개인 식별 정보는 수집하지 않습니다.',
+    local:'로컬 저장', localBody:'게임 설정(음량, 언어), 보유 크레딧, 캐릭터 선택, 로컬 랭킹 기록은 이 기기의 브라우저(localStorage)에만 저장되며 외부로 전송되지 않습니다.',
+    ads:'광고', adsBody:'본 게임은 Google AdMob를 통해 실제 광고를 표시합니다. 광고 제공 및 효과 측정 과정에서 광고 식별자와 기기 정보가 수집될 수 있습니다.',
+    global:'랭킹 저장', globalBody:'이 게임의 랭킹은 서버에 전송되지 않고 이 기기의 브라우저(localStorage)에만 저장됩니다. 현재 Firebase 서버 연동은 꺼져 있습니다.',
+    withdraw:'기록 삭제', withdrawBody:'랭킹 화면의 「기록 삭제」 버튼으로 로컬 랭킹·저장된 닉네임·최고 기록을 삭제할 수 있습니다. 전체 게임 데이터는 브라우저 캐시/사이트 데이터 삭제로도 제거할 수 있습니다.',
+    children:'대상 연령', childrenBody:'본 게임은 만 16세 이상 이용자를 대상으로 하며, 만 16세 미만 이용자의 개인정보를 의도적으로 수집하지 않습니다.',
+    contact:'문의', contactBody:'개발자: MewgicPixel / 연락처: 010-2947-5602 / 이메일: junstar508@gmail.com',
+    updated:'최종 업데이트: 2026년 11월',
+  },
+  en: {
+    title:'Privacy Policy', sub:'PRIVACY POLICY',
+    collected:'Information We Collect', collectedBody:'This game collects only the nickname you enter yourself for the ranking. We do not collect any other personally identifiable information.',
+    local:'Local Storage', localBody:'Game settings (volume, language), credits, the selected character, and local ranking records are stored only in this device\'s browser (localStorage) and are never sent elsewhere.',
+    ads:'Advertising', adsBody:'This game displays real ads through Google AdMob. Advertising IDs and device information may be collected to serve and measure ads.',
+    global:'Ranking Storage', globalBody:'Rankings are not sent to a server; they are stored only in the browser on this device (localStorage). Firebase server sync is currently disabled.',
+    withdraw:'Deleting Records', withdrawBody:'Use the DELETE RECORDS button on the ranking screen to remove local rankings, the saved nickname, and the best score. You can also remove all game data by clearing browser cache or site data.',
+    children:'Age Group', childrenBody:'This game is intended for users aged 16 and over. We do not knowingly collect personal information from anyone under 16.',
+    contact:'Contact', contactBody:'Developer: MewgicPixel / Phone: 010-2947-5602 / Email: junstar508@gmail.com',
+    updated:'Last updated: November 2026',
+  },
+  ja: {
+    title:'プライバシーポリシー', sub:'PRIVACY POLICY',
+    collected:'収集する情報', collectedBody:'本ゲームはランキング登録のため、ユーザーが自分で入力したニックネームのみを収集します。それ以外の個人を特定できる情報は収集しません。',
+    local:'ローカル保存', localBody:'ゲーム設定（音量・言語）、クレジット、選択キャラクター、ローカルランキングは、この端末のブラウザ（localStorage）にのみ保存され、外部に送信されません。',
+    ads:'広告', adsBody:'本ゲームは Google AdMob により実際の広告を表示します。広告の配信と効果測定のため、広告識別子や端末情報が収集される場合があります。',
+    global:'ランキング保存', globalBody:'ランキングはサーバーに送信されず、この端末のブラウザ（localStorage）にのみ保存されます。現在Firebaseサーバー連携は無効です。',
+    withdraw:'記録の削除', withdrawBody:'ランキング画面の「記録を削除」ボタンで、ローカルランキング・保存されたニックネーム・最高記録を削除できます。ブラウザのキャッシュやサイトデータの削除でも全データを削除できます。',
+    children:'対象年齢', childrenBody:'本ゲームは16歳以上を対象としており、16歳未満の個人情報を意図的に収集しません。',
+    contact:'お問い合わせ', contactBody:'開発者: MewgicPixel / 電話: 010-2947-5602 / メール: junstar508@gmail.com',
+    updated:'最終更新: 2026年11月',
+  },
+  zh: {
+    title:'隐私政策', sub:'PRIVACY POLICY',
+    collected:'收集的信息', collectedBody:'本游戏仅为排行榜收集您自行输入的昵称，不收集任何其他可识别个人身份的信息。',
+    local:'本地存储', localBody:'游戏设置（音量、语言）、积分、角色选择和本地排行榜记录仅保存在本机浏览器（localStorage）中，不会发送到外部。',
+    ads:'广告', adsBody:'本游戏通过 Google AdMob 展示真实广告。为投放和衡量广告，可能会收集广告标识符和设备信息。',
+    global:'排行榜存储', globalBody:'排行榜数据不会发送到服务器，仅保存在本机浏览器（localStorage）中。当前 Firebase 服务器同步已关闭。',
+    withdraw:'删除记录', withdrawBody:'可在排行榜界面点击“删除记录”按钮，删除本地排行榜、保存的昵称和最高分。也可通过清除浏览器缓存或网站数据删除全部游戏数据。',
+    children:'适用年龄', childrenBody:'本游戏面向16岁及以上用户，不会故意收集16岁以下用户的个人信息。',
+    contact:'联系方式', contactBody:'开发者：MewgicPixel / 电话：010-2947-5602 / 邮箱：junstar508@gmail.com',
+    updated:'最后更新：2026年11月',
+  },
+  es: {
+    title:'Política de privacidad', sub:'PRIVACY POLICY',
+    collected:'Información que recopilamos', collectedBody:'Este juego solo recopila el apodo que introduces tú mismo para la clasificación. No recopilamos ninguna otra información personal identificable.',
+    local:'Almacenamiento local', localBody:'La configuración del juego (volumen, idioma), los créditos, el personaje seleccionado y la clasificación local se guardan solo en el navegador de este dispositivo (localStorage) y nunca se envían a otros lugares.',
+    ads:'Publicidad', adsBody:'Este juego muestra anuncios reales a través de Google AdMob. Se pueden recopilar identificadores publicitarios y datos del dispositivo para mostrar y medir anuncios.',
+    global:'Almacenamiento de clasificación', globalBody:'Las clasificaciones no se envían a ningún servidor; se guardan solo en el navegador de este dispositivo (localStorage). La sincronización con Firebase está desactivada.',
+    withdraw:'Borrar registros', withdrawBody:'Usa el botón BORRAR REGISTROS en la pantalla de clasificación para eliminar los registros locales, el apodo guardado y la mejor puntuación. También puedes borrar todos los datos limpiando la caché o los datos del sitio.',
+    children:'Edad objetivo', childrenBody:'Este juego está dirigido a usuarios de 16 años o más. No recopilamos deliberadamente información personal de menores de 16 años.',
+    contact:'Contacto', contactBody:'Desarrollador: MewgicPixel / Teléfono: 010-2947-5602 / Correo: junstar508@gmail.com',
+    updated:'Última actualización: noviembre de 2026',
+  },
+  fr: {
+    title:'Politique de confidentialité', sub:'PRIVACY POLICY',
+    collected:'Informations collectées', collectedBody:'Ce jeu collecte uniquement le pseudo que vous saisissez vous-même pour le classement. Aucune autre information personnelle identifiable n’est collectée.',
+    local:'Stockage local', localBody:'Les paramètres du jeu (volume, langue), les crédits, le personnage sélectionné et le classement local sont enregistrés uniquement dans le navigateur de cet appareil (localStorage) et ne sont jamais envoyés ailleurs.',
+    ads:'Publicité', adsBody:'Ce jeu affiche de vraies publicités via Google AdMob. Des identifiants publicitaires et des informations sur l’appareil peuvent être collectés pour diffuser et mesurer les annonces.',
+    global:'Stockage du classement', globalBody:'Les classements ne sont pas envoyés à un serveur ; ils sont enregistrés uniquement dans le navigateur de cet appareil (localStorage). La synchronisation Firebase est actuellement désactivée.',
+    withdraw:'Suppression des enregistrements', withdrawBody:'Utilisez le bouton SUPPRIMER sur l’écran de classement pour effacer les classements locaux, le pseudo enregistré et le meilleur score. Vous pouvez aussi supprimer toutes les données en effaçant le cache ou les données du site.',
+    children:'Âge cible', childrenBody:'Ce jeu est destiné aux utilisateurs âgés de 16 ans et plus. Nous ne collectons pas volontairement de données personnelles concernant les moins de 16 ans.',
+    contact:'Contact', contactBody:'Développeur : MewgicPixel / Téléphone : 010-2947-5602 / E-mail : junstar508@gmail.com',
+    updated:'Dernière mise à jour : novembre 2026',
+  },
+  de: {
+    title:'Datenschutzerklärung', sub:'PRIVACY POLICY',
+    collected:'Erhobene Daten', collectedBody:'Dieses Spiel erhebt nur den von dir selbst eingegebenen Spitznamen für die Rangliste. Weitere personenbezogene Daten werden nicht erfasst.',
+    local:'Lokale Speicherung', localBody:'Spieleinstellungen (Lautstärke, Sprache), Guthaben, gewählter Charakter und lokale Ranglisten werden nur im Browser dieses Geräts (localStorage) gespeichert und nie nach außen gesendet.',
+    ads:'Werbung', adsBody:'Dieses Spiel zeigt echte Werbung über Google AdMob an. Für Auslieferung und Messung von Werbung können Werbe-IDs und Geräteinformationen erfasst werden.',
+    global:'Ranglisten-Speicherung', globalBody:'Ranglisten werden nicht an einen Server gesendet; sie werden nur im Browser dieses Geräts (localStorage) gespeichert. Die Firebase-Synchronisierung ist derzeit deaktiviert.',
+    withdraw:'Einträge löschen', withdrawBody:'Mit der Schaltfläche DATEN LÖSCHEN im Ranglistenbildschirm kannst du lokale Einträge, den gespeicherten Spitznamen und den Bestwert löschen. Alle Spieldaten kannst du auch durch Löschen des Browser-Caches oder der Websitedaten entfernen.',
+    children:'Zielalter', childrenBody:'Dieses Spiel ist für Nutzer ab 16 Jahren vorgesehen. Wir erheben nicht absichtlich personenbezogene Daten von unter 16-Jährigen.',
+    contact:'Kontakt', contactBody:'Entwickler: MewgicPixel / Telefon: 010-2947-5602 / E-Mail: junstar508@gmail.com',
+    updated:'Letzte Aktualisierung: November 2026',
+  },
+  pt: {
+    title:'Política de privacidade', sub:'PRIVACY POLICY',
+    collected:'Dados coletados', collectedBody:'Este jogo coleta apenas o apelido que você mesmo informa para o ranking. Nenhuma outra informação pessoal identificável é coletada.',
+    local:'Armazenamento local', localBody:'Configurações do jogo (volume, idioma), créditos, personagem selecionado e ranking local ficam apenas no navegador deste dispositivo (localStorage) e nunca são enviados para fora.',
+    ads:'Publicidade', adsBody:'Este jogo exibe anúncios reais por meio do Google AdMob. Identificadores de publicidade e informações do dispositivo podem ser coletados para exibir e medir anúncios.',
+    global:'Armazenamento do ranking', globalBody:'Os rankings não são enviados a um servidor; ficam apenas no navegador deste dispositivo (localStorage). A sincronização com o Firebase está desativada.',
+    withdraw:'Excluir registros', withdrawBody:'Use o botão EXCLUIR REGISTROS na tela de ranking para apagar os registros locais, o apelido salvo e a melhor pontuação. Você também pode remover todos os dados limpando o cache ou os dados do site.',
+    children:'Idade recomendada', childrenBody:'Este jogo é destinado a usuários com 16 anos ou mais. Não coletamos intencionalmente dados pessoais de menores de 16 anos.',
+    contact:'Contato', contactBody:'Desenvolvedor: MewgicPixel / Telefone: 010-2947-5602 / E-mail: junstar508@gmail.com',
+    updated:'Última atualização: novembro de 2026',
+  },
+  ru: {
+    title:'Политика конфиденциальности', sub:'PRIVACY POLICY',
+    collected:'Собираемые данные', collectedBody:'Игра собирает только никнейм, который вы вводите сами для рейтинга. Другие персональные данные не собираются.',
+    local:'Локальное хранение', localBody:'Настройки игры (громкость, язык), кредиты, выбранный персонаж и локальный рейтинг хранятся только в браузере этого устройства (localStorage) и никуда не отправляются.',
+    ads:'Реклама', adsBody:'В игре показывается реальная реклама через Google AdMob. Для показа и оценки рекламы могут собираться рекламные идентификаторы и данные устройства.',
+    global:'Хранение рейтинга', globalBody:'Рейтинг не отправляется на сервер и хранится только в браузере этого устройства (localStorage). Синхронизация с Firebase сейчас отключена.',
+    withdraw:'Удаление записей', withdrawBody:'Кнопка УДАЛИТЬ ЗАПИСИ на экране рейтинга удаляет локальные записи, сохранённый никнейм и лучший результат. Все данные игры можно удалить через очистку кэша или данных сайта.',
+    children:'Возрастная группа', childrenBody:'Игра предназначена для пользователей от 16 лет. Мы не собираем личные данные лиц младше 16 лет намеренно.',
+    contact:'Контакты', contactBody:'Разработчик: MewgicPixel / Телефон: 010-2947-5602 / Эл. почта: junstar508@gmail.com',
+    updated:'Обновлено: ноябрь 2026',
+  },
+  ar: {
+    title:'سياسة الخصوصية', sub:'PRIVACY POLICY',
+    collected:'المعلومات التي نجمعها', collectedBody:'تجمع هذه اللعبة فقط الاسم المستعار الذي تدخله بنفسك للترتيب. لا نجمع أي معلومات شخصية أخرى يمكن تحديدها.',
+    local:'التخزين المحلي', localBody:'تُحفظ إعدادات اللعبة (الصوت، اللغة) والرصيد والشخصية المختارة والترتيب المحلي في متصفح هذا الجهاز فقط (localStorage) ولا تُرسل إلى أي جهة خارجية.',
+    ads:'الإعلانات', adsBody:'تعرض اللعبة إعلانات حقيقية عبر Google AdMob. قد يتم جمع معرفات الإعلانات ومعلومات الجهاز لعرض الإعلانات وقياسها.',
+    global:'تخزين الترتيب', globalBody:'لا تُرسل الترتيبات إلى أي خادم؛ بل تُحفظ في متصفح هذا الجهاز فقط (localStorage). مزامنة Firebase معطّلة حالياً.',
+    withdraw:'حذف السجلات', withdrawBody:'استخدم زر حذف السجلات في شاشة الترتيب لحذف السجلات المحلية والاسم المستعار المحفوظ وأفضل نتيجة. يمكنك أيضاً حذف جميع بيانات اللعبة عبر مسح ذاكرة التخزين المؤقت أو بيانات الموقع.',
+    children:'الفئة العمرية', childrenBody:'اللعبة مخصصة للمستخدمين الذين تبلغ أعمارهم 16 عاماً أو أكثر. لا نجمع عمداً بيانات شخصية من أي شخص دون 16 عاماً.',
+    contact:'اتصل بنا', contactBody:'المطوّر: MewgicPixel / الهاتف: 010-2947-5602 / البريد: junstar508@gmail.com',
+    updated:'آخر تحديث: نوفمبر 2026',
+  },
+};
+
+const SUPPORTED = Object.keys(PRIVACY_I18N);
+const KEYS = ['title','sub','collected','collectedBody','local','localBody','ads','adsBody','global','globalBody','withdraw','withdrawBody','children','childrenBody','contact','contactBody','updated'];
+
+function detectLang(){
+  const n = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').slice(0,2).toLowerCase();
+  return SUPPORTED.indexOf(n) !== -1 ? n : 'en';
+}
+let savedLang = 'auto';
+try { savedLang = localStorage.getItem('js_lang') || 'auto'; } catch(e) {}
+
+function render(){
+  const code = savedLang === 'auto' ? detectLang() : savedLang;
+  const d = PRIVACY_I18N[code] || PRIVACY_I18N.en;
+  document.documentElement.lang = code;
+  document.documentElement.dir = (code === 'ar') ? 'rtl' : 'ltr';
+  document.title = d.title + ' | MewgicPixel';
+  KEYS.forEach(k => {
+    const el = document.getElementById(k);
+    if (el) el.textContent = d[k];
+  });
+  document.getElementById('langSelect').value = savedLang;
+}
+document.getElementById('langSelect').addEventListener('change', function(){
+  savedLang = this.value;
+  try { localStorage.setItem('js_lang', savedLang); } catch(e) {}
+  render();
+});
+render();
+</script>
+</body>
+</html>
